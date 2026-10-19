@@ -19,16 +19,6 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/r
 RUN apt update && \
     apt install ros-dev-tools ros-jazzy-ros-base python3-colcon-common-extensions clang-format python3-pip python-is-python3 moreutils ros-jazzy-foxglove-bridge ros-jazzy-rmw-cyclonedds-cpp can-utils pv python3-pytest tmux htop net-tools vim iputils-ping ros-jazzy-example-interfaces -y
 
-RUN git clone https://github.com/axboe/liburing.git && \
-    cd liburing && \
-    git checkout liburing-2.12 && \
-    ./configure --cc=gcc --cxx=g++ && \
-    make && \
-    make liburing.pc && \
-    make install && \
-    cd .. && \
-    rm -rf liburing
-
 WORKDIR /
 
 USER vscode
